@@ -57,7 +57,7 @@ auto lexLine(string line)
             ++i;
             int len, begin = i;
             while(line[i] != '\'' && line[i] != '\"'){
-                i++
+                ++i;
             }
             len = i - begin;
             pom.text = line.substr(begin, len);
@@ -81,7 +81,7 @@ auto lexLine(string line)
         {
 
             if(j == line.substr(i, j.size())){
-                token pom = {id: "end", j};
+                token pom = {"end", j};
                 wyn.PB(pom);
                 continue;
             }
@@ -91,7 +91,7 @@ auto lexLine(string line)
         for (auto j : logOps)
         {
             if(j == line.substr(i, j.size())){
-                token pom = {id: "op", text: j};
+                token pom = {"op", j};
                 i+= j.size() - 1;
                 wyn.PB(pom);
                 continue;
@@ -101,7 +101,7 @@ auto lexLine(string line)
         for (auto j : mathOps)
         {
             if(j == line.substr(i, j.size())){
-                token pom = {id: "op", text: j};
+                token pom = {"op", j};
                 i+= j.size() - 1;
                 wyn.PB(pom);
                 continue;
@@ -111,7 +111,7 @@ auto lexLine(string line)
         for (auto j : otherOps)
         {
             if(j == line.substr(i, j.size())){
-                token pom = {id: "op", text: j};
+                token pom = { "op", j};
                 i+= j.size() - 1;
                 wyn.PB(pom);
                 continue;
@@ -140,7 +140,7 @@ auto lexLine(string line)
 
 auto lexer(string fileTxt){
     vector<token> wyn = vector<token>();  
-    for(int i = 0; i < fileTxt; ++i){
+    for(int i = 0; i < fileTxt.size(); ++i){
         int beg = i, len;
         while (fileTxt[i] != LINEEND && fileTxt[i-1] != '\\'){
             ++i;
