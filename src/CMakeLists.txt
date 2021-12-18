@@ -5,3 +5,4 @@ project(Tutorial)
 
 # add the executable
 add_executable(Tutorial main.cpp)
+add_executable(build build.cpp)

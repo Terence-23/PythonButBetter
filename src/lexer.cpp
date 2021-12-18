@@ -65,14 +65,15 @@ auto lexLine(string line)
         }
 
         // check if operator
-        
+        bool isop = false;
         // parentheses
         for (auto j : partBegOps)
         {
             if(j == line.substr(i, j.size())){
                 token pom = {"beg", j};
                 wyn.PB(pom);
-                continue;
+                isop = true;
+                break;
             }
 
         }
@@ -83,7 +84,8 @@ auto lexLine(string line)
             if(j == line.substr(i, j.size())){
                 token pom = {"end", j};
                 wyn.PB(pom);
-                continue;
+                isop = true;
+                break;
             }
         }
 
@@ -94,7 +96,8 @@ auto lexLine(string line)
                 token pom = {"op", j};
                 i+= j.size() - 1;
                 wyn.PB(pom);
-                continue;
+                isop = true;
+                break;
             }
         }
         // mathematical (including bit)
@@ -104,7 +107,9 @@ auto lexLine(string line)
                 token pom = {"op", j};
                 i+= j.size() - 1;
                 wyn.PB(pom);
-                continue;
+                isop = true;
+                break;
+                
             }
         }
         // other
@@ -114,8 +119,16 @@ auto lexLine(string line)
                 token pom = { "op", j};
                 i+= j.size() - 1;
                 wyn.PB(pom);
-                continue;
+                isop = true;
+                break;
+                
             }
+        }
+
+        if(isop) 
+        {
+            isop = false; 
+            continue;
         }
 
         // name it just id
@@ -125,7 +138,6 @@ auto lexLine(string line)
         while(! isspace(line[i])){
             ++i;
         }
-        --i;
         pom.text = line.substr(begin, i - begin);
         wyn.PB(pom);
     }
