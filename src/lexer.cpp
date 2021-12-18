@@ -70,7 +70,7 @@ auto lexLine(string line)
         for (auto j : partBegOps)
         {
             if(j == line.substr(i, j.size())){
-                token pom = {id: "beg", j};
+                token pom = {"beg", j};
                 wyn.PB(pom);
                 continue;
             }
