@@ -1,5 +1,9 @@
 #include <string>
 
+
+const char COMCHAR = '#';
+const char LINEEND = ';';
+
 const int MON = 24;
 const std::string mathOps[MON] = {
     // Increment / Decrement
@@ -25,8 +29,11 @@ const std::string logOps[LON] = {
 };
 
 const int PON  = 3;
-const std::string partOps[PON] = {
+const std::string partBegOps[PON] = {
     "(", "[", "{"
+};
+const std::string partEndOps[PON] = {
+    ")", "]", "}"
 };
 
 const int OON = 1;
