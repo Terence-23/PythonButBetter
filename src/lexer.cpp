@@ -10,7 +10,7 @@ using namespace std;
 
 struct token
 {
-    std::string text, id;
+    std::string id, text;
 };
 
 auto lexLine(string line)
@@ -44,7 +44,6 @@ auto lexLine(string line)
                     wP = false;
                 i++;
             }
-            i--;
 
             pom.text = line.substr(begin, i - begin);
             wyn.PB(pom);
@@ -61,6 +60,8 @@ auto lexLine(string line)
             }
             len = i - begin;
             pom.text = line.substr(begin, len);
+            wyn.PB(pom);
+            i++;
             continue;
         }
 
@@ -80,7 +81,6 @@ auto lexLine(string line)
 
         for(auto j : partEndOps)
         {
-
             if(j == line.substr(i, j.size())){
                 token pom = {"end", j};
                 wyn.PB(pom);
@@ -136,10 +136,17 @@ auto lexLine(string line)
         pom.id = "id";
         int begin = i;
         while(! isspace(line[i])){
+            for(auto j : ops){
+                if (line.substr(i, j.size()) == j){
+                    goto endOfId;
+                }
+            }
             ++i;
         }
+        endOfId:
         pom.text = line.substr(begin, i - begin);
         wyn.PB(pom);
+        i--;
     }
 
     end:
@@ -153,13 +160,13 @@ auto lexLine(string line)
 auto lexer(string fileTxt){
     vector<token> wyn = vector<token>();  
     for(int i = 0; i < fileTxt.size(); ++i){
-        int beg = i, len;
+        int beg = i;
         while (fileTxt[i] != LINEEND && fileTxt[i-1] != '\\'){
             ++i;
         }
         
-        len = i - 1 - beg;
-        auto pom = lexLine(fileTxt.substr(beg, len));
+        // int len = i - beg;
+        auto pom = lexLine(fileTxt.substr(beg, i-beg));
         for( auto j : pom){
             wyn.PB(j);
         }

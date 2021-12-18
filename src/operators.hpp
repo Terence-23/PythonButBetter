@@ -38,5 +38,34 @@ const std::string partEndOps[PON] = {
 
 const int OON = 1;
 const std::string otherOps[OON] = {
-    "in"
+    ":"
+};
+
+const int ON = MON + LON + PON + OON;
+const std::string ops[ON] = {
+    // logic
+    "!", "||", "&&", "^",
+
+    // increment / decrement
+    "++", "--",
+
+    // simple maths
+    "+", "-", "*", "/", "%",
+
+    // Bit operations
+    "<<", ">>", "!", "^", "&", "|",
+
+    // with equal
+    // simple maths
+    "+=", "-=", "*=", "/=", "%=",
+
+    // Bit operations
+    "<<=", ">>=", "!=", "^=", "&=", "|=",
+
+    // parentheses
+    "(", "[", "{",
+
+    // other
+    ":"
+
 };
