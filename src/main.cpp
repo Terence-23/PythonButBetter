@@ -1,18 +1,18 @@
 #include <iostream>
-#include "lexer.cpp"
-
+#include <string>
+#include <algorithm>
 
 using namespace std;
 
 int main(){
+    const int n = 6;
+    string array[n] ={"int", "float", "string", "list", "map", "bool"};
 
-    cout << "Dziala\n";
-    for (int i = 0; i < 10; i++){
-        cout << i << "\n";
-        for(int j = 0; j < 10 ; j ++){
-            cout << i * j << "\n";
-            break;
-        }
+    sort(array, array+n);
+    
+    for(auto i : array){
+        cout <<'"'<< i << "\"\n";
     }
+
     return 0;
 }

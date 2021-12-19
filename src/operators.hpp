@@ -3,6 +3,7 @@
 
 const char COMCHAR = '#';
 const char LINEEND = ';';
+const char SEP = ',';
 
 const int MON = 24;
 const std::string mathOps[MON] = {
@@ -68,4 +69,14 @@ const std::string ops[ON] = {
     // other
     ":"
 
+};
+
+const int BTC = 6;
+std::string buildInTypes[BTC] = {
+    "bool",
+    "float",
+    "int",
+    "list",
+    "map",
+    "string",
 };

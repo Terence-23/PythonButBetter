@@ -2,6 +2,7 @@
 #include <string>
 #include <iostream>
 #include "lexer.cpp"
+#include "parser.cpp"
 
 string readFile2(const string &fileName)
 {
@@ -16,25 +17,25 @@ string readFile2(const string &fileName)
     return string(bytes.data(), fileSize);
 }
 
-void printVec(const vector<token> vec){
-    for(auto i : vec){
+void printVec(const vector<token> vec)
+{
+    for (auto i : vec)
+    {
         cout << "id: " << i.id << " text: " << i.text << '\n';
     }
 }
 
-int main(){
+int main()
+{
     ifstream f;
     string fName;
     cin >> fName;
     f.open(fName);
-    // if (f.is_open()){
-        string txt = readFile2(fName);
-        
-        auto lexed = lexer(txt);
-        printVec(lexed);
-    // }
-    // else{
-    //     cout << "Error, could not open the file";
-    //     return -1;
-    // }
+
+    string txt = readFile2(fName);
+
+    auto lexed = lexer(txt);
+    printVec(lexed);
+    auto parsed = parse(lexed);
+
 }
