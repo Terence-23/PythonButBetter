@@ -4,11 +4,13 @@
 using namespace std;
 
 struct TokenNode{
-    string id, text, dType;
+    string id, text;
     vector<TokenNode> sub;
+
 };
 
-class ATS{
+class ATS
+{
     TokenNode first;
 public:
     ATS(TokenNode first){

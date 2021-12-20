@@ -1,50 +1,79 @@
-#include<string>
-#include<vector>
-#include<unordered_map>
-#include<iostream>
+#include <string>
+#include <vector>
+#include <unordered_map>
+#include <iostream>
 
-#define push_back PB
+#define index unsigned long long
+#define PB push_back
 
-#include "operators.hpp"
-#include "dataStructs.cpp"
+#include "lexer.cpp"
 
 using namespace std;
 
-vector<TokenNode> inTypes(vector<token> in){
-    for (int i = 0; i < in.size(); ++i){
-        if(in[i].id == "id"){
+// opPriority
+/*
+    =       
+    +       
+    -   ||  
+    *   &&  
+    /   ==
+    <<
+    >>
+    %
+*/
 
-        }
-    }
+auto block(){
+    
 }
 
-auto parse(vector<token> toParse){
 
-    vector<ATS> parsed = vector<ATS>();
 
-    //def ATS for every  function
-    for (int it = 0; it < toParse.size(); it++){
-        token i = toParse[it];
-        if(i.id == "id" && i.text == "def"){
-            if(toParse[it+1].id != "id"){
-                cout << "Invalid function declaration\n";
+auto parse(vector<token> toParse)
+{
+    TokenNode program, None = {"", "out of program"};
+    program.sub.PB(None);
+    TokenNode* pCurrent = &program;
+    TokenNode* block;
+    int partLvl = 0;
+
+    // parse through the vector and change it to the tree
+    for (unsigned long long i = 0; i < toParse.size(); ++i)
+    {
+        
+        auto current = *pCurrent;
+        /*
+            block - space inside parentheses 
+                in one line without separator inside
+
+        */
+
+
+
+        // blocking
+        block:
+            ++i;
+            index beg = i, end;
+            
+
+
+        // lvlUp
+        lvlUp:
+            if (current.sub[0].id == ""){
+                cout << "No open parentheses to be closed";
                 throw -1;
             }
-            it +=2;
-            TokenNode mainNode;
-            mainNode.dType = "func";
-            mainNode.text = toParse[it].text;
-            mainNode.id = "func";
-            if (toParse[it].id != "beg" && toParse[it].text != "("){
-
-            }
-
-            auto input = inTypes();
-        }
+            pCurrent = &(current.sub[0]);
+            partLvl -=1;
+            continue;
+        // lvlDown
+        lvlDown:
+            pCurrent = &(current.sub[current.sub.size()-1]);
+            continue;
+    }
+    if( partLvl){
+        cout << "Not all parnetheses had been closed";
+        throw -1;
     }
 
-
-
-
-    return parsed;
+    return program;
 }

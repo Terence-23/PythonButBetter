@@ -80,3 +80,15 @@ std::string buildInTypes[BTC] = {
     "map",
     "string",
 };
+
+const int KWC = 9;
+const std::string keywords[KWC] = {
+    // defining
+    "def", "class", "var", "const",
+
+    // error handling
+    "try", "except", "finally",
+
+    // returning data
+    "return", "raise" 
+};

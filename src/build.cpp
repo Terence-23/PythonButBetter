@@ -1,7 +1,6 @@
 #include <fstream>
 #include <string>
 #include <iostream>
-#include "lexer.cpp"
 #include "parser.cpp"
 
 string readFile2(const string &fileName)

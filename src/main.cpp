@@ -1,8 +1,10 @@
 #include <iostream>
 #include <string>
 #include <algorithm>
+#define index unsigned long long
 
 using namespace std;
+
 
 int main(){
     const int n = 6;
