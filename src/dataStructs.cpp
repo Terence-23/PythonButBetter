@@ -5,6 +5,7 @@ using namespace std;
 
 struct TokenNode{
     string id, text;
+    // sub[0] == parent
     vector<TokenNode> sub;
 
 };

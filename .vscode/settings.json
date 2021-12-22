@@ -1,0 +1,10 @@
+{
+    "cmake.sourceDirectory": "${workspaceFolder}/src",
+    "files.associations": {
+        "array": "cpp",
+        "unordered_map": "cpp",
+        "vector": "cpp",
+        "initializer_list": "cpp",
+        "string_view": "cpp"
+    }
+}

@@ -5,8 +5,10 @@ const char COMCHAR = '#';
 const char LINEEND = ';';
 const char SEP = ',';
 
-const int MON = 24;
+const int MON = 25;
 const std::string mathOps[MON] = {
+    // equal
+    "=",
     // Increment / Decrement
     "++", "--",
 
@@ -24,9 +26,9 @@ const std::string mathOps[MON] = {
     "<<=", ">>=", "!=", "^=", "&=", "|="
 };
 
-const int LON = 4;
-const std::string logOps[LON] = {
-    "!", "||", "&&", "^"
+const int CON = 6;
+const std::string compareOps[6]{
+    ">", "<", "==", "!=", "<=", ">="
 };
 
 const int PON  = 3;
@@ -42,11 +44,13 @@ const std::string otherOps[OON] = {
     ":"
 };
 
-const int ON = MON + LON + PON + OON;
+const int ON = MON + CON + PON + OON;
 const std::string ops[ON] = {
-    // logic
-    "!", "||", "&&", "^",
-
+    //  
+    "=",
+    // comparsion
+    ">", "<", "==", "!=", "<=", ">=",
+    
     // increment / decrement
     "++", "--",
 
@@ -81,7 +85,7 @@ std::string buildInTypes[BTC] = {
     "string",
 };
 
-const int KWC = 9;
+const int KWC = 11;
 const std::string keywords[KWC] = {
     // defining
     "def", "class", "var", "const",
@@ -90,5 +94,39 @@ const std::string keywords[KWC] = {
     "try", "except", "finally",
 
     // returning data
-    "return", "raise" 
+    "return", "raise", 
+
+    // conditions and loops
+    "if", "for"
 };
+
+
+const int ONP = MON + CON + PON + OON - 1;
+const std::string opsP[ONP] = {
+    
+    // with equal
+    
+    "=",
+    // other
+    ":",
+    // simple maths
+    "+=", "-=", "*=", "/=", "%=",
+
+    // Bit operations
+    "<<=", ">>=", "!=", "^=", "&=", "|=",
+    // comparsion
+    ">", "<", "==", "!=", "<=", ">=",
+    "^", "&", "|",
+    // increment / decrement
+    "++", "--",
+
+    // simple maths
+    "+", "-", "*", "/", "%",
+
+    // Bit operations
+    "<<", ">>",
+    
+
+};
+
+

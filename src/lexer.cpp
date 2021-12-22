@@ -74,6 +74,18 @@ auto lexLine(string line)
 
         // check if operator
         bool isop = false;
+        
+        // keyword
+        for (auto j : keywords)
+        {
+            if (j == line.substr(i, j.size()))
+            {
+                token pom = {"beg", j};
+                wyn.PB(pom);
+                isop = true;
+                break;
+            }
+        }
         // parentheses
         for (auto j : partBegOps)
         {
@@ -96,19 +108,7 @@ auto lexLine(string line)
                 break;
             }
         }
-
-        // logical
-        for (auto j : logOps)
-        {
-            if (j == line.substr(i, j.size()))
-            {
-                token pom = {"op", j};
-                i += j.size() - 1;
-                wyn.PB(pom);
-                isop = true;
-                break;
-            }
-        }
+        
         // mathematical (including bit)
         for (auto j : mathOps)
         {
@@ -121,6 +121,20 @@ auto lexLine(string line)
                 break;
             }
         }
+
+        // comparsion ops
+        for (auto j : compareOps)
+        {
+            if (j == line.substr(i, j.size()))
+            {
+                token pom = {"op", j};
+                i += j.size() - 1;
+                wyn.PB(pom);
+                isop = true;
+                break;
+            }
+        }
+        
         // other
         for (auto j : otherOps)
         {
