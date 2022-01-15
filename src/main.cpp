@@ -5,16 +5,17 @@
 
 using namespace std;
 
+struct  cos{
+    int a, b;
+};
+
 
 int main(){
-    const int n = 6;
-    string array[n] ={"int", "float", "string", "list", "map", "bool"};
-
-    sort(array, array+n);
+    cos a = {5, 6};
+    cos& b = a;
+    a.a += 5;
+    cout << "A: "<< a.a <<"\nB: "<< b.a;
     
-    for(auto i : array){
-        cout <<'"'<< i << "\"\n";
-    }
 
     return 0;
 }

@@ -1,6 +1,5 @@
 #include <string>
 
-
 const char COMCHAR = '#';
 const char LINEEND = ';';
 const char SEP = ',';
@@ -23,34 +22,29 @@ const std::string mathOps[MON] = {
     "+=", "-=", "*=", "/=", "%=",
 
     // Bit operations
-    "<<=", ">>=", "!=", "^=", "&=", "|="
-};
+    "<<=", ">>=", "!=", "^=", "&=", "|="};
 
 const int CON = 6;
 const std::string compareOps[6]{
-    ">", "<", "==", "!=", "<=", ">="
-};
+    ">", "<", "==", "!=", "<=", ">="};
 
-const int PON  = 3;
+const int PON = 3;
 const std::string partBegOps[PON] = {
-    "(", "[", "{"
-};
+    "(", "[", "{"};
 const std::string partEndOps[PON] = {
-    ")", "]", "}"
-};
+    ")", "]", "}"};
 
 const int OON = 1;
 const std::string otherOps[OON] = {
-    ":"
-};
+    ":"};
 
 const int ON = MON + CON + PON + OON;
 const std::string ops[ON] = {
-    //  
+    //
     "=",
     // comparsion
     ">", "<", "==", "!=", "<=", ">=",
-    
+
     // increment / decrement
     "++", "--",
 
@@ -94,39 +88,56 @@ const std::string keywords[KWC] = {
     "try", "except", "finally",
 
     // returning data
-    "return", "raise", 
+    "return", "raise",
 
     // conditions and loops
-    "if", "for"
-};
-
+    "if", "for"};
 
 const int ONP = MON + CON + PON + OON - 1;
 const std::string opsP[ONP] = {
-    
+
     // with equal
-    
+
     "=",
     // other
     ":",
     // simple maths
-    "+=", "-=", "*=", "/=", "%=",
+    "+=",
+    "-=",
+    "*=",
+    "/=",
+    "%=",
 
     // Bit operations
-    "<<=", ">>=", "!=", "^=", "&=", "|=",
+    "<<=",
+    ">>=",
+    "!=",
+    "^=",
+    "&=",
+    "|=",
     // comparsion
-    ">", "<", "==", "!=", "<=", ">=",
-    "^", "&", "|",
+    ">",
+    "<",
+    "==",
+    "!=",
+    "<=",
+    ">=",
+    "^",
+    "&",
+    "|",
     // increment / decrement
-    "++", "--",
+    "++",
+    "--",
 
     // simple maths
-    "+", "-", "*", "/", "%",
+    "+",
+    "-",
+    "*",
+    "/",
+    "%",
 
     // Bit operations
-    "<<", ">>",
-    
+    "<<",
+    ">>",
 
 };
-
-

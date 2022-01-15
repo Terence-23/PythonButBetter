@@ -9,6 +9,9 @@
 
 using namespace std;
 
+const token EOFTAG = {"EOF", "EOF"};
+const token NL ={"newline", ""};
+
 auto lexLine(string line)
 {
 
@@ -60,7 +63,6 @@ auto lexLine(string line)
             len = i - begin;
             pom.text = line.substr(begin, len);
             wyn.PB(pom);
-            i++;
             continue;
         }
 
@@ -80,9 +82,10 @@ auto lexLine(string line)
         {
             if (j == line.substr(i, j.size()))
             {
-                token pom = {"beg", j};
+                token pom = {"keyword", j};
                 wyn.PB(pom);
                 isop = true;
+                i += j.size()-1;
                 break;
             }
         }
@@ -98,7 +101,7 @@ auto lexLine(string line)
             }
         }
 
-        for (auto j : partEndOps)
+        for(auto j : partEndOps)
         {
             if (j == line.substr(i, j.size()))
             {
@@ -176,8 +179,6 @@ auto lexLine(string line)
     }
 
 end:
-    token NL;
-    NL.id = "newline";
     wyn.PB(NL);
     return wyn;
 }
@@ -200,5 +201,6 @@ auto lexer(string fileTxt)
             wyn.PB(j);
         }
     }
+    wyn.PB(EOFTAG);
     return wyn;
 }

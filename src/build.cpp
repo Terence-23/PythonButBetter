@@ -32,24 +32,36 @@ int main()
     string txt;
     try
     {
-    txt = readFile2(fName);
-    }catch(std::exception &e){
+        txt = readFile2(fName);
+    }
+    catch (std::exception &e)
+    {
         cout << "Error while reading a file:\n"
-            << e.what() << '\n';
+             << e.what() << '\n';
         return 1;
     }
     vector<token> lexed;
-    try { lexed = lexer(txt);}
-    catch(std::invalid_argument &e){
-        cout << "error in lexer:\n" 
-            << e.what() << "\n";
+    try
+    {
+        lexed = lexer(txt);
+    }
+    catch (std::invalid_argument &e)
+    {
+        cout << "error in lexer:\n"
+             << e.what() << "\n";
         return 1;
     }
     printVec(lexed);
-
-    try { auto parsed = parse(lexed);}
-    catch(std::invalid_argument &e){
-        cout << "Error while parsing into ATS:\n"
-            << e.what() << "\n";
+    TokenNode parsed;
+    try
+    {
+        parsed = parse(lexed);
     }
+    catch (std::invalid_argument &e)
+    {
+        cout << "Error while parsing into ATS:\n"
+             << e.what() << "\n";
+        return 1;
+    }
+    cout << "Done\n";
 }
